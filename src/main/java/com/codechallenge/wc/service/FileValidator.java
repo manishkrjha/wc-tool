@@ -23,7 +23,11 @@ public class FileValidator {
         if(Files.isDirectory(path)){
             throw new IllegalArgumentException("Invalid file name provided");
         }
-        
+
+        if(!Files.isReadable(path)){
+            throw new IllegalArgumentException("The file you've added is not readable");
+        }
+
         return path;
     }
 
